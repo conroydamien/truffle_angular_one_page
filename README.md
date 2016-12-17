@@ -18,3 +18,6 @@ It has one very simple contract with a payable method. The contract extracts a f
 4. From the root directroy of the project run `truffle build`.
 5. You should now have a `build` directory under the root directory, `cd` into the `build` directory.
 6. Use `python -m SimpleHTTPServer` and visit `localhost:8000` with a browser.
+
+## Notes
+The code using the contract is pretty inefficient as it sets the two recipient accounts each time a payment is sent. Also - fees to the contract are lost forever. There are quite a few opportunities to improve this - I'm learning as I go! 

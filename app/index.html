@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='myApp' ng-controller='myCtrl'>
+<head>
+  <title>SplitCoin</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="./app.css" rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Acc #<th>Balance
+    <tr ng-repeat="account in accounts">
+      <td>{{account}}<td>{{balances[account]}}
+    <tr>
+      <td colspan=2><hr></td>
+    <tr>
+      <td>Contract balance: <td>{{contractBalance}}
+    <tr>
+      <td colspan=2><hr></td>
+    <tr>
+      <td><label for="amount">Amount to spend:</label>
+        <input id="amount" ng-model="amount" size = 20></input>
+      <td><label for="fee">Contract Fee:</label>
+        <input id="fee" ng-model="fee" size = 20></input>
+    <tr>
+      <td colspan=2><label for"from">Pay from account:</label>
+        <select ng-options="account for account in accounts" ng-model="accountFrom"></select>
+      </td>
+      <tr>
+      <td><label for="accA">Acc A:</label>
+        <select ng-options="account for account in accounts" ng-model="accountA"></select>
+      <td><label for="accB">Acc B:</label>
+        <select ng-options="account for account in accounts" ng-model="accountB"></select>
+    <tr>
+      <td colspan=2 align=center><button ng-click="splitFunction()">Split a payment!</button></td>
+  </table>
+</body>
+</html>

@@ -1,6 +1,17 @@
 pragma solidity ^0.4.2;
 
-contract SplitCoin {
+contract mortal {
+    /* Define variable owner of the type address*/
+    address owner;
+
+    /* this function is executed at initialization and sets the owner of the contract */
+    function mortal() { owner = msg.sender; }
+
+    /* Function to recover the funds on the contract */
+    function kill() { if (msg.sender == owner) selfdestruct(owner); }
+}
+
+contract SplitCoin is mortal {
 
   address public accountA;
   address public accountB;
@@ -20,9 +31,14 @@ contract SplitCoin {
   }
 
   function paySomeEther() payable {
-    uint valueToSend = (msg.value - fee)/ 2;
+    uint valueToSend = (msg.value - fee)/2;
 
-    bool retValA = accountA.send(valueToSend);
-    bool retValB = accountB.send(valueToSend);
+    if (!(accountA.send(valueToSend) && accountB.send(valueToSend))) {
+      throw;
+    }
+  }
+
+  function() payable {
+    paySomeEther();
   }
 }

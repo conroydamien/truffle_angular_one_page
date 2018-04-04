@@ -4,6 +4,8 @@
 
 ### a change on the test_branch branch
 
+### another test change
+
 # truffle_angular_one_page
 
 This is a simple one-page AngularJS app that uses Truffle to communicate with the Ethereum Testrpc (it's not ready for anything else yet).
